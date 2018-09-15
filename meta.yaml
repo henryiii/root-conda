@@ -1,0 +1,56 @@
+package:
+  name: root
+  version: "6.14.04"
+
+source:
+  git_rev: v6-14-04
+  git_url: "https://github.com/root-project/root.git"
+
+build:
+  detect_binary_files_with_prefix: True
+
+requirements:
+  host:
+    - python
+    - numpy
+    - openssl
+    - cmake
+    - sqlite
+    - pcre
+    - libxml2
+    - icu
+    - graphviz
+    - xz
+    - tbb
+    - gsl # [osx]
+    - freetype # [osx]
+    - krb5 # [osx]
+
+  run:
+    - python
+    - numpy
+    - openssl
+    - sqlite
+    - pcre
+    - libxml2
+    - icu
+    - graphviz
+    - xz
+    - tbb
+    - gsl # [osx]
+    - freetype # [osx]
+    - krb5 # [osx]
+
+test:
+  #imports:
+    #- ROOT
+  commands:
+    - root -b -q
+    - which root
+    - source thisroot.sh
+    - python -c "import ROOT"
+
+about:
+  home: "https://root.cern.ch"
+  license: "LGPL 2.1+"
+  license_file: LICENSE
