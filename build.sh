@@ -3,9 +3,12 @@
 mkdir -p workdir
 cd workdir
 
-cmake ../ -DCMAKE_INSTALL_PREFIX=$PREFIX \
+cmake $SRC_DIR \
+    -DCMAKE_INSTALL_PREFIX="$PREFIX" \
+    -G"$CMAKE_GENERATOR" \
+    -DCMAKE_BUILD_TYPE=Release \
     -Dgnuinstall=ON \
-    -DCMAKE_INSTALL_LIBDIR=$SP_DIR \
+    -DCMAKE_INSTALL_LIBDIR="$SP_DIR" \
     -Dbuiltin_freetype=ON \
     -Dfftw3=ON \
     -Dgdml=OFF \
@@ -17,7 +20,7 @@ cmake ../ -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -Dssl=ON \
     -Dxrootd=ON \
     -Dpython=ON \
-    -DPYTHON_EXECUTABLE=$PYTHON
+    -DPYTHON_EXECUTABLE="$PYTHON"
 
 make -j$CPU_COUNT
 make install
