@@ -11,9 +11,14 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
     - make # [linux]
+    - python
+    - pcre
+    - xz
+
 
   host:
     - python
@@ -26,17 +31,28 @@ requirements:
     - graphviz
     - xz
     - tbb
+    - zlib
     - gsl # [osx]
     - freetype # [osx]
     - krb5 # [osx]
     - libuuid # [linux]
-    - xorg-libx11 # [linux]
-    - xorg-libxft # [linux]
-    - libxcb # [linux]
 
   run:
     - python
     - numpy
+    - openssl
+    - sqlite
+    - pcre
+    - libxml2
+    - icu
+    - graphviz
+    - xz
+    - tbb
+    - zlib
+    - gsl # [osx]
+    - freetype # [osx]
+    - krb5 # [osx]
+    - libuuid # [linux]
 
 test:
   #imports:
